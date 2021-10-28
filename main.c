@@ -5,8 +5,8 @@
 #include <string.h>
 
 // Constantes
-#define DEFAULT_ROWS 5
-#define DEFAULT_COLUMNS 5
+#define DEFAULT_ROWS 9
+#define DEFAULT_COLUMNS 9
 
 struct size {
     int n;
@@ -24,6 +24,7 @@ void initBoard(struct board*);
 void displayBoard(struct board*);
 
 int main(int argc, const char *argv[]) {
+     srand(time(NULL));
     showParameters(argc, argv);
     struct board boardMemory;
     boardMemory.dimensions = getBoardSize(argc, argv);
@@ -84,7 +85,7 @@ struct size getBoardSize(int argc, const char *argv[]) {
 void initBoard(struct board* board) {
     int cRows = board->dimensions.n;
     int cColumns = board->dimensions.m;
-    printf("Llenando el tablero %d x%d", cRows, cColumns);
+    printf("Llenando el tablero %d x %d", cRows, cColumns);
     // Tarea 1: Investigar que es la  Memoria dinamica -> malloc
 }
 
@@ -93,9 +94,10 @@ void initBoard(struct board* board) {
  **/
 void displayBoard(struct board *board) {
     printf("\n\n");
+    srand(time(NULL));
     for (int i = 0 ; i < board->dimensions.n ; i ++) {
         for( int j = 0 ; j < board->dimensions.m; j ++) {
-            printf("| %c ",'A');
+            printf("| %d ",rand()% (10-1)+1);
         }
         printf("|\n");
     }
