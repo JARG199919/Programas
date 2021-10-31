@@ -16,30 +16,18 @@ struct board {
     char *content[]; 
     };
 
-//void showParameters(int, const char *[]);
 struct size getBoardSize(int, const char *[]);
 void initBoard(struct board*);
 void displayBoard(struct board*);
 
 int main(int argc, const char *argv[]) {
     srand(time(NULL));
-    //showParameters(argc, argv);
     struct board boardMemory;
     boardMemory.dimensions = getBoardSize(argc, argv);
-    //printf("Iniciando juego de memoria con tablero de dimensiones de %d x %d\n",boardMemory.dimensions.n, boardMemory.dimensions.m);
     initBoard(&boardMemory);
     displayBoard(&boardMemory);
     return 0;
 }
-
-/*void showParameters(int argc, const char *argv[]) {
-    printf("Parametros\n");
-    for (int i = 0; i < argc; i++) {
-        printf("#%d\t%s\n", i, argv[i]);
-    }
-    printf("Fin\n");
-}*/
-
 
 struct size getBoardSize(int argc, const char *argv[]) {
     struct size board = {DEFAULT_ROWS, DEFAULT_COLUMNS};
@@ -51,15 +39,12 @@ struct size getBoardSize(int argc, const char *argv[]) {
         board.m = (m == 0) ? DEFAULT_COLUMNS : m;
 
         if ((board.n * board.m) % 2 != 0) {
-            printf(
-                "Seleccione una dimension de tablero que contenga una cantidad "
-                "par de elementos\n");
+            printf("Seleccione una dimension de tablero que contenga una cantidad " "par de elementos\n");
             exit(1);
         }
     }
     return board;
 }
-
 /**
  * Llenar el contendio del tablero con parajes
  * posicionadas de forma aleatoria segun las dimensiones 
