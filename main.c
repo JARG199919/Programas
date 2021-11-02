@@ -120,7 +120,6 @@ void innumeros(void){
     printf("%d\n",number2player);
 }
 void playerGame(void){
-    innumeros();
-    
+    innumeros(); 
     
 }
