@@ -38,7 +38,7 @@ int main(int argc, const char *argv[]) {
     initBoard(&boardMemory);
     displayBoard(&boardMemory);
     freeBoard(&boardMemory);
-    printf("Jugador 1, ingrese sus numeros para juagar:\n");
+    printf("Jugador 1, ingrese sus numeros para jugar:\n");
     playerGame();
     /*printf("Jugador 2, ingrese sus numeros para juagar:\n");
     playerGame();*/
