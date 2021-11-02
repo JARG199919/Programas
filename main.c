@@ -19,22 +19,29 @@ struct board {
     char contentColor[COLOR_STRING_SIZE]; 
     char **content; 
 };
+
 //Declaracion de funciones
 struct size getBoardSize(int, const char *[]);
 void initBoard(struct board*);
 void freeBoard(struct board*);
 void displayBoard(struct board*);
+void playerGame(void);
+void innumeros(void);
+
 
 int main(int argc, const char *argv[]) {
     struct board boardMemory;
     boardMemory.dimensions = getBoardSize(argc, argv);
     strcpy(boardMemory.borderColor, "\033[0;35m");
     strcpy(boardMemory.contentColor, "\033[1;36m");
-    printf("Iniciando juego de memoria con tablero %d x %d\n",
-        boardMemory.dimensions.n, boardMemory.dimensions.m);
+    printf("Iniciando juego de memoria con tablero %d x %d\n",boardMemory.dimensions.n, boardMemory.dimensions.m);
     initBoard(&boardMemory);
     displayBoard(&boardMemory);
     freeBoard(&boardMemory);
+    printf("Jugador 1, ingrese sus numeros para juagar:\n");
+    playerGame();
+    /*printf("Jugador 2, ingrese sus numeros para juagar:\n");
+    playerGame();*/
     return 0;
 }
 //Estructura de la tabla 
@@ -102,4 +109,18 @@ void displayBoard(struct board *board) {
         printf("───┴");
     }
     printf("───┘\033[0m\n\n");
+}
+void innumeros(void){
+    int numberplayer=0,number2player=0;
+    printf("ingrese la primer numero 1: ");
+    scanf("%d",&numberplayer);
+    printf("%d\n",numberplayer);
+    printf("ingrese el segundo numero 2: ");
+    scanf("%d",&number2player);
+    printf("%d\n",number2player);
+}
+void playerGame(void){
+    innumeros();
+    
+    
 }
