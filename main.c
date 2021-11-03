@@ -36,7 +36,7 @@ int main(int argc, const char *argv[]) {
     initBoard(&boardMemory);
     displayBoard(&boardMemory);
     freeBoard(&boardMemory);
-    printf("Jugador 1, ingrese sus numeros para juagar:\n");
+    printf("Jugador 1, ingrese sus numeros para jugar:\n");
     playerGame();
     /*printf("Jugador 2, ingrese sus numeros para juagar:\n");
     playerGame();*/
@@ -109,13 +109,18 @@ void displayBoard(struct board *board) {
     printf("───┘\033[0m\n\n");
 }
 void innumeros(void){
-    int numberplayer=0,number2player=0;
-    printf("ingrese la primer numero 1: ");
-    scanf("%d",&numberplayer);
-    printf("%d\n",numberplayer);
-    printf("ingrese el segundo numero 2: ");
-    scanf("%d",&number2player);
-    printf("%d\n",number2player);
+     int jugador1=0;
+    int jugador2=0;
+        printf("turno de jugador 1\n");
+         printf("ingrese el numero que quiere elegir: ");
+          scanf("%d",&jugador1);
+        printf("%d\n",jugador1);
+        
+        printf("turno de jugador 2\n");
+          printf("ingrese el numero que quiere elegir: ");
+            scanf("%d",&jugador2);
+        printf("%d\n",jugador2);
+    
 }
 void playerGame(void){
     innumeros();   
