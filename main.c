@@ -38,8 +38,6 @@ int main(int argc, const char *argv[]) {
     freeBoard(&boardMemory);
     printf("Jugador 1, ingrese sus numeros para jugar:\n");
     playerGame();
-    /*printf("Jugador 2, ingrese sus numeros para juagar:\n");
-    playerGame();*/
     return 0;
 }
 //Estructura de la tabla 
@@ -109,7 +107,7 @@ void displayBoard(struct board *board) {
     printf("───┘\033[0m\n\n");
 }
 void innumeros(void){
-     int jugador1=0;
+    int jugador1=0;
     int jugador2=0;
         printf("turno de jugador 1\n");
          printf("ingrese el numero que quiere elegir: ");
