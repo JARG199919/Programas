@@ -1,4 +1,13 @@
-void innumeros(void){
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+#include <string.h>
+
+
+
+
+int main(int argc, char const *argv[]){
     int jugador1=0;
     int jugador2=0;
         printf("turno de jugador 1\n");
@@ -12,4 +21,3 @@ void innumeros(void){
         printf("%d\n",jugador2);
     
 }
-void playerGame(void){
