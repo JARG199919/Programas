@@ -19,7 +19,6 @@ struct board {
     char contentColor[COLOR_STRING_SIZE]; 
     char **content; 
 };
-
 //Declaracion de funciones
 struct size getBoardSize(int, const char *[]);
 void initBoard(struct board*);
@@ -27,7 +26,6 @@ void freeBoard(struct board*);
 void displayBoard(struct board*);
 void playerGame(void);
 void innumeros(void);
-
 
 int main(int argc, const char *argv[]) {
     struct board boardMemory;
