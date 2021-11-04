@@ -71,7 +71,7 @@ void initBoard(struct board *board) {
             }
             for(int j = 0; j< cColumns; j++) {
                 board->content[i][j].card = rand()% (10-1)+1;
-                board->content[i][j].status = 0;//rand()% (10-1)+1; 
+                board->content[i][j].status = SHOW;//rand()% (10-1)+1; 
             }
         }
     } 

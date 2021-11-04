@@ -9,3 +9,4 @@ primer juego creado en C# (Todavia en desarrollo)
 ## Orientador
 
 1. Néstor Aladana
+https://github.com/Nexxtor
