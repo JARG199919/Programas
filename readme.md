@@ -6,6 +6,6 @@ primer juego creado en C# (Todavia en desarrollo)
 1. Jesus Antonio Reyes Garcia
 2. Melissa Belen Urbina Medrano
 
-## Ejemplos basados de el Autor 
+## Orientador
 
 1. Néstor Aladana
