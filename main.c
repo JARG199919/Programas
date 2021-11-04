@@ -98,7 +98,6 @@ void displayBoard(struct board *board) {
             for (int j = 0; j < board->dimensions.m; j++) {
             char *contentColor = board->contentColor;
             char *borderColor = board->borderColor;
-            /*printf("│%s %d %s",board->contentColor, board->content[i][j], board->borderColor);*/
             displayCelda(borderColor, contentColor, board->content[i][j]);
         }
         printf("│\n├");
@@ -110,9 +109,8 @@ void displayBoard(struct board *board) {
         for (int j = 0; j < board->dimensions.m; j++) {
         char *contentColor = board->contentColor;
         char *borderColor = board->borderColor;
-        /*printf("│%s %d %s",board->contentColor, board->content[board->dimensions.n -1][j], board->borderColor);*/
-         displayCelda(borderColor, contentColor,board->content[board->dimensions.n - 1][j]);
-    }
+        displayCelda(borderColor, contentColor,board->content[board->dimensions.n - 1][j]);
+        }
         printf("│\n└");
         for (int j = 0; j < board->dimensions.m - 1; j++) {
         printf("───┴");
@@ -139,7 +137,6 @@ void playerGame(void){
 void displayCelda(char *borderColor, char *contentColor, struct celda celda) {
     char *hiddenSymbol = "♠"; 
     int content=celda.card;
-    //content[1] = '\0';
     char *matchString = " "; 
 
     int *displayString; 
@@ -157,5 +154,4 @@ void displayCelda(char *borderColor, char *contentColor, struct celda celda) {
             printf("│%s %s %s", contentColor, displayString ,borderColor);
             break;
     }
-    //printf("│%s %s %s", contentColor, displayString ,borderColor);
 }
