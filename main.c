@@ -34,8 +34,6 @@ void freeBoard(struct board*);
 void displayBoard(struct board*);
 void displaycelda(char*, char*,struct celda);
 bool hasPairs(struct board*);
-
-
 void initGame(struct board *);
 
 int main(int argc, const char *argv[]) {
@@ -75,17 +73,6 @@ int main(int argc, const char *argv[]) {
     } while(hasPairs(&boardMemory));
     freeBoard(&boardMemory);
     return 0;
-    /*struct board boardMemory;
-    boardMemory.dimensions = getBoardSize(argc, argv);
-    strcpy(boardMemory.borderColor, "\033[0;35m");
-    strcpy(boardMemory.contentColor, "\033[1;36m");
-    printf("Iniciando juego de memoria con tablero %d x %d\n",boardMemory.dimensions.n, boardMemory.dimensions.m);
-    initBoard(&boardMemory);
-    displayBoard(&boardMemory);
-    freeBoard(&boardMemory);
-    printf("Jugador 1, ingrese sus numeros para jugar:\n");
-    playerGame();
-    return 0;*/
 }
 void initGame(struct board *boardMemory) {
     strcpy(boardMemory->borderColor, "\033[0;35m");
@@ -149,15 +136,14 @@ void fillBoard(struct board *board) {
             xPos1 = rand() % cRows;
             yPos1 = rand() % cColumns;
         } while (board->content[xPos1][yPos1].card != '\0');
-        do {        // TODO: Hacer tiempo para que el usuario vea el contenido de la opcion 2
+        do {   
             xPos2 = rand() % cRows;
             yPos2 = rand() % cColumns;
         } while (board->content[xPos2][yPos2].card != '\0');
         if (xPos1 == xPos2 && yPos1 == yPos2) {
             continue;
         }
-        // printf("Llenando posion %d %d y %d %d %c\n", xPos1,yPos1, xPos2,
-        // yPos2, options[i]);
+        // printf("Llenando posion %d %d y %d %d %c\n", xPos1,yPos1, xPos2,yPos2, options[i]);
         board->content[xPos2][yPos2].card = options[i];
         board->content[xPos1][yPos1].card = options[i];
         i++;
@@ -213,15 +199,12 @@ void displayCelda(char *borderColor, char *contentColor, struct celda celda) {
     switch (celda.status){
         case HIDDEN:
             displayString = hiddenSymbol;
-            //printf("│%s %s %s", contentColor, displayString ,borderColor);
             break;
         case SHOW:
             displayString = content;
-            //printf("│%s %d %s", contentColor, displayString ,borderColor);
             break;
         case MATCH:
             displayString =  matchString;
-            //printf("│%s %s %s", contentColor, displayString ,borderColor);
             break;
     }
     printf("│%s %s %s", contentColor, displayString, borderColor);
