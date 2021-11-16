@@ -305,7 +305,6 @@ void reconfigGame(struct board *boardMemory) {
         printf("Ingrese la cantidad de columnas: ");
         scanf("%d", &m);
     }
-
     liberarmemoria(boardMemory);
 
     boardMemory->dimensions.n = n;
