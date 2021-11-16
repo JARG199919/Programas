@@ -49,7 +49,6 @@ int main(int argc, const char *argv[]) {
     printf("Bienvenido al juego de memoria\n\n\n");
 
     int opcion;
-
     do {
         int puntaje;
         showGameMenu();
