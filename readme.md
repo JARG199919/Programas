@@ -1,4 +1,5 @@
-# Juego de Memoria 1.0
+# Juego de Memoria 1.9
+
 primer juego creado en C# (Todavia en desarrollo)
 
 ## Autores
