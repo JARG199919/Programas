@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include <string.h>
 
+//Codigo principal sin optimizar
+
+
 //costantes definidas en ES y hay algunas en ingles
 #define DEFAULT_ROWS 4
 #define DEFAULT_COLUMNS 4
