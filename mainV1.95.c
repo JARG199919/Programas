@@ -11,7 +11,6 @@ Para iniciar el codigo inserta en tu consola el comando:
 gcc mainbuild1.9.c Funciones.h Declaraciones.c -o main && ./main
 
 */
-
 int main(int argc, const char *argv[]) {
     FILE *pointFile;
     struct board boardMemory;
