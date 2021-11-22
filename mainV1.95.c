@@ -5,6 +5,12 @@
 #include <string.h>
 
 #include "Funciones.h"
+/*
+
+Para iniciar el codigo inserta en tu consola el comando:
+gcc mainbuild1.9.c Funciones.h Declaraciones.c -o main && ./main
+
+*/
 
 int main(int argc, const char *argv[]) {
     FILE *pointFile;
@@ -26,7 +32,7 @@ int main(int argc, const char *argv[]) {
                 char nombre[20];
                 printf("Ingresa tu nombre de jugador: ");
                 scanf("%s", nombre);
-                pointFile = fopen("./puntos.txt","a");
+                pointFile = fopen("./puntos.txt","a");//Abre o Crea un archivo llamado puntos.txt
                 fprintf(pointFile,"%d,%s\n",puntaje,nombre);
                 fclose(pointFile);// Guardar en un archivo
                 break;
@@ -34,8 +40,8 @@ int main(int argc, const char *argv[]) {
                 system("clear");
                 int puntajeTop = 0;
                 char nombreJugador[20];
-                pointFile = fopen("./puntos.txt","r");
-                while(fscanf(pointFile,"%d,%s", &puntajeTop, nombreJugador)!= EOF) {
+                pointFile = fopen("./puntos.txt","r");//Abre o Crea un archivo llamado puntos.txt
+                while(fscanf(pointFile,"%d,%s", &puntajeTop, nombreJugador)!= EOF) {//Abre el archivo y lo lee 
                     printf("%s\t%d\n",nombreJugador,puntajeTop);
                 }
                 fclose(pointFile);
@@ -49,7 +55,7 @@ int main(int argc, const char *argv[]) {
                 liberarmemoria(&boardMemory);
                 break;
             default:
-                printf("Obcion no encontrada, por favor ingrese una opcion valida\n");
+                printf("Opcion no encontrada, por favor ingrese una opcion valida\n");
                 break;
         }
     } 
