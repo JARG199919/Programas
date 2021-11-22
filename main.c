@@ -6,7 +6,6 @@
 
 //Codigo principal sin optimizar
 
-
 //costantes definidas en ES y hay algunas en ingles
 #define DEFAULT_ROWS 4
 #define DEFAULT_COLUMNS 4
@@ -147,7 +146,7 @@ void fillBoard(struct board *board) {
     int nOptions = (nColumnas * nFilas) / 2;
     char options[nOptions];
     for (int j = 0; j < nOptions; j++) {
-        options[j] = 'A' + rand() % 25;//Llenando con letras aleatorias //TODO: cambiar a numeros aleatorios del 1 al 9
+        options[j] = '0' +rand() % 9;//Llenando con numeros aleatorios en modo declaracion Char
     }
     int i = 0;
     while (i < nOptions) {
@@ -208,7 +207,7 @@ void displayBoard(struct board *board) {
 }
 //mostrando o ocultando variables
 void mostrar_celda(char *borderColor, char *contentColor, struct celda celda) {
-    char *ocultarvariable = "♠"; 
+    char *ocultarvariable = "✠"; 
     char contenido[2];
     contenido[0] = celda.card;
     contenido[1] = '\0';
