@@ -23,8 +23,8 @@ struct celda{
 };
 struct board {
     struct size dimensions;
-    char borderColor[COLOR_STRING_SIZE];
-    char contentColor[COLOR_STRING_SIZE]; 
+    char borderColor[COLOR_STRING_SIZE];//Se agrego para la decoracion de la tabla 
+    char contentColor[COLOR_STRING_SIZE]; //Se agrego para la decoracion de la tabla
     struct celda **contenido; 
 };
 //Declaracion de funciones
