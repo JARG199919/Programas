@@ -17,8 +17,8 @@ void EstructuraDelJuego(struct board *boardMemory) {
 struct size getBoardSize(int argc, const char *argv[]) {
     struct size board = {DEFAULT_ROWS, DEFAULT_COLUMNS};
     if (argc >= 3) {
-        int n = atoi(argv[1]);
-        int m = atoi(argv[2]);
+        int n = atoi(argv[1]);//Convertir a string
+        int m = atoi(argv[2]);//Convertir a string
         board.n = (n == 0) ? DEFAULT_ROWS : n;
         board.m = (m == 0) ? DEFAULT_COLUMNS : m;
         if ((board.n * board.m) % 2 != 0) {
@@ -28,7 +28,7 @@ struct size getBoardSize(int argc, const char *argv[]) {
     }
     return board;
 }
-//llenado de la tabla con valores aleatorios
+//llenado de la tabla
 void initBoard(struct board *board) {
     int nFilas = board->dimensions.n;
     int nColumnas = board->dimensions.m;
@@ -53,8 +53,8 @@ void initBoard(struct board *board) {
 }
 //Llenado de tabla
 void fillBoard(struct board *board) {
-    int nFilas = board->dimensions.n;
-    int nColumnas = board->dimensions.m;
+    int nFilas = board->dimensions.n;//Guarda el numero de filas
+    int nColumnas = board->dimensions.m;//Guarda el numero de columnas
     srand(time(NULL));
     int nOptions = (nColumnas * nFilas) / 2;
     char options[nOptions];
@@ -65,14 +65,14 @@ void fillBoard(struct board *board) {
     while (i < nOptions) {
         int xPos1, yPos1, xPos2, yPos2;
         do {
-            xPos1 = rand() % nFilas;
-            yPos1 = rand() % nColumnas;
+            xPos1 = rand() % nFilas; //Llenando con numeros aleatorios
+            yPos1 = rand() % nColumnas;//Llenando con numeros aleatorios
         } while (board->contenido[xPos1][yPos1].card != '\0');
         do {   
             xPos2 = rand() % nFilas;
             yPos2 = rand() % nColumnas;
         } while (board->contenido[xPos2][yPos2].card != '\0');
-        if (xPos1 == xPos2 && yPos1 == yPos2) {
+        if (xPos1 == xPos2 && yPos1 == yPos2) {// Verifica que tenga pares y si es asi continua
             continue;
         }
         board->contenido[xPos2][yPos2].card = options[i];
@@ -120,7 +120,7 @@ void displayBoard(struct board *board) {
 }
 //mostrando o ocultando variables
 void mostrar_celda(char *borderColor, char *contentColor, struct celda celda) {
-    char *ocultarvariable = "♠"; 
+    char *ocultarvariable = "♠"; //Se puede cambiar el simbolo
     char contenido[2];
     contenido[0] = celda.card;
     contenido[1] = '\0';
@@ -155,11 +155,13 @@ bool formandopares(struct board *board) {
     }
     return false;
 }
-void cleanBuffer() {
+void cleanBuffer() {//Es una funcion que libera el buffer para que no ocurra numeros o strings con errores
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
-int memoryGame(struct board *boardMemory) {
+int memoryGame(struct board *boardMemory) {/*TODO: Agregar una funcion o integrar una opcion que al digitar las filas y columnas, 
+                                            tenga una opcion de aceptar un numero o cualquier letra o numero para que no salga una violacion de segmanto
+                                            y que diga "Ingrese el formato siguente #,# */
     char cont;
     int puntajes = 0;
     do {
