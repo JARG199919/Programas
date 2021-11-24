@@ -47,10 +47,10 @@ int main(int argc, const char *argv[]) {
                 printf("\n\n");
                 break;
             case 3:
-                reconfigGame(&boardMemory);
+                reconfigGame(&boardMemory);//Modifica el tamaño
                 break;
             case 4:
-                printf("Gracias por jugar\n");
+                printf("Gracias por jugar\n");//Libera la memoria y finaliza el juego
                 liberarmemoria(&boardMemory);
                 break;
             default:
