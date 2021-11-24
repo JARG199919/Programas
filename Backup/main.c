@@ -24,8 +24,8 @@ struct celda{
 };
 struct board {
     struct size dimensions;
-    char borderColor[COLOR_STRING_SIZE];
-    char contentColor[COLOR_STRING_SIZE]; 
+    char borderColor[COLOR_STRING_SIZE];//Se agrego para la decoracion de la tabla
+    char contentColor[COLOR_STRING_SIZE]; //Se agrego para la decoracion de la tabla
     struct celda **contenido; 
 };
 //Declaracion de funciones
@@ -40,7 +40,7 @@ void EstructuraDelJuego(struct board *);
 int memoryGame(struct board *);
 void reconfigGame(struct board *);
 void showGameMenu();
-void cleanBuffer();
+void LimpiarBuffer();
 
 int main(int argc, const char *argv[]) {
     FILE *pointFile;
@@ -62,7 +62,7 @@ int main(int argc, const char *argv[]) {
                 char nombre[20];
                 printf("Ingresa tu nombre de jugador: ");
                 scanf("%s", nombre);
-                pointFile = fopen("./puntos.txt","a");
+                pointFile = fopen("./puntos.txt","a");//Abre o Crea un archivo llamado puntos.txt
                 fprintf(pointFile,"%d,%s\n",puntaje,nombre);
                 fclose(pointFile);// Guardar en un archivo
                 break;
@@ -70,7 +70,7 @@ int main(int argc, const char *argv[]) {
                 system("clear");
                 int puntajeTop = 0;
                 char nombreJugador[20];
-                pointFile = fopen("./puntos.txt","r");
+                pointFile = fopen("./puntos.txt","r");//Abre o Crea un archivo llamado puntos.txt
                 while(fscanf(pointFile,"%d,%s", &puntajeTop, nombreJugador)!= EOF) {
                     printf("%s\t%d\n",nombreJugador,puntajeTop);
                 }
@@ -78,14 +78,14 @@ int main(int argc, const char *argv[]) {
                 printf("\n\n");
                 break;
             case 3:
-                reconfigGame(&boardMemory);
+                reconfigGame(&boardMemory);//Modifica el tamaño
                 break;
             case 4:
-                printf("Gracias por jugar\n");
+                printf("Gracias por jugar\n");//Libera la memoria y finaliza el juego
                 liberarmemoria(&boardMemory);
                 break;
             default:
-                printf("Obcion no encontrada, por favor ingrese una opcion valida\n");
+                printf("Opcion no encontrada, por favor ingrese una opcion valida\n");
                 break;
         }
     } 
@@ -104,8 +104,8 @@ void EstructuraDelJuego(struct board *boardMemory) {
 struct size getBoardSize(int argc, const char *argv[]) {
     struct size board = {DEFAULT_ROWS, DEFAULT_COLUMNS};
     if (argc >= 3) {
-        int n = atoi(argv[1]);
-        int m = atoi(argv[2]);
+        int n = atoi(argv[1]);//Convertir a string
+        int m = atoi(argv[2]);//Convertir a string
         board.n = (n == 0) ? DEFAULT_ROWS : n;
         board.m = (m == 0) ? DEFAULT_COLUMNS : m;
         if ((board.n * board.m) % 2 != 0) {
@@ -140,7 +140,7 @@ void initBoard(struct board *board) {
 }
 //Llenado de tabla
 void fillBoard(struct board *board) {
-    int nFilas = board->dimensions.n;
+    int nFilas = board->dimensions.n;//Guarda el numero de filas
     int nColumnas = board->dimensions.m;
     srand(time(NULL));
     int nOptions = (nColumnas * nFilas) / 2;
@@ -152,14 +152,14 @@ void fillBoard(struct board *board) {
     while (i < nOptions) {
         int xPos1, yPos1, xPos2, yPos2;
         do {
-            xPos1 = rand() % nFilas;
+            xPos1 = rand() % nFilas; //Llenando con numeros aleatorios
             yPos1 = rand() % nColumnas;
         } while (board->contenido[xPos1][yPos1].card != '\0');
         do {   
             xPos2 = rand() % nFilas;
             yPos2 = rand() % nColumnas;
         } while (board->contenido[xPos2][yPos2].card != '\0');
-        if (xPos1 == xPos2 && yPos1 == yPos2) {
+        if (xPos1 == xPos2 && yPos1 == yPos2) {// Verifica que tenga pares y si es asi continua
             continue;
         }
         board->contenido[xPos2][yPos2].card = options[i];
@@ -175,7 +175,7 @@ void liberarmemoria(struct board *board) {
     }  
     free(board->contenido);
 }
-//funcion de muestra en pantalla con decoracion
+//funcion de muestra todo la estructura de la tabla en pantalla con decoracion
 void displayBoard(struct board *board) {
     printf("\n\n%s┌", board->borderColor);
     for (int j = 0; j < board->dimensions.m - 1; j++) {
@@ -207,7 +207,7 @@ void displayBoard(struct board *board) {
 }
 //mostrando o ocultando variables
 void mostrar_celda(char *borderColor, char *contentColor, struct celda celda) {
-    char *ocultarvariable = "✠"; 
+    char *ocultarvariable = "✠"; //Se puede cambiar el simbolo
     char contenido[2];
     contenido[0] = celda.card;
     contenido[1] = '\0';
@@ -242,7 +242,7 @@ bool formandopares(struct board *board) {
     }
     return false;
 }
-void cleanBuffer() {
+void LimpiarBuffer() {//Es una funcion que libera el buffer para que no ocurra numeros o strings con errores
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
@@ -276,8 +276,7 @@ int memoryGame(struct board *boardMemory) {
         displayBoard(boardMemory);
         scanf("%c", &cont);
 
-        if (boardMemory->contenido[xPos2][yPos2].card ==
-            boardMemory->contenido[xPos1][yPos1].card) {
+        if (boardMemory->contenido[xPos2][yPos2].card == boardMemory->contenido[xPos1][yPos1].card) {
             boardMemory->contenido[xPos2][yPos2].status = MATCH;
             boardMemory->contenido[xPos1][yPos1].status = MATCH;
             printf("\nHas encontrado una pareja\n");
@@ -293,7 +292,7 @@ int memoryGame(struct board *boardMemory) {
         if (cont == 'N' || cont == 'n') {
             return puntajes;
         }
-        cleanBuffer();
+        LimpiarBuffer();
     } 
     while (formandopares(boardMemory));
     return puntajes;
