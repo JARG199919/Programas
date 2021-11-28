@@ -59,7 +59,7 @@ void fillBoard(struct board *board) {
     int nOptions = (nColumnas * nFilas) / 2;
     char options[nOptions];
     for (int j = 0; j < nOptions; j++) {
-        options[j] = 'A' + rand() % 25;//Llenando con letras aleatorias //TODO: cambiar a numeros aleatorios del 1 al 9
+        options[j] = '0' +rand() % 10;//Llenando con letras aleatorias //TODO: cambiar a numeros aleatorios del 1 al 9
     }
     int i = 0;
     while (i < nOptions) {
@@ -164,11 +164,14 @@ int memoryGame(struct board *boardMemory) {
     int puntajes = 0;
     do {
         int xPos1, yPos1, xPos2, yPos2;
+
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory); 
-
-        printf("Seleccione la tarjeta que desea ver (#,#): ");
-        scanf("%d,%d", &xPos1, &yPos1);
+        printf("Ingrese el primer numero de la tabla en un rango de 1 al 9: \n");
+        printf("\nIngrese el numero de fila: ");
+        scanf("%d",&xPos1);
+        printf("Ingrese el numero de columna: ");
+        scanf("%d",&yPos1);
         xPos1--;
         yPos1--;
         system("clear");
@@ -177,9 +180,11 @@ int memoryGame(struct board *boardMemory) {
 
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory);
-
-        printf("Seleccione la segunda tarjeta que desea ver (#,#): ");
-        scanf("%d,%d", &xPos2, &yPos2);
+        printf("Ingrese el segundo numero de la tabla en un rango de 1 al 9: \n");
+        printf("\nIngrese el numero de fila: ");
+        scanf("%d",&xPos2);
+        printf("\nIngrese el numero de columna: ");
+        scanf("%d",&yPos2);
         xPos2--;
         yPos2--;
         system("clear");
@@ -231,5 +236,5 @@ void reconfigGame(struct board *boardMemory) {
     system("clear");
 }
 void showGameMenu() {
-    printf("1.Jugar\n2.Ver Puntajes\n3.Configuración\n4.Salir");
+    printf("1.Jugar\n2.Ver Puntajes\n3.Relas del juego\n4.Configuración\n5.Salir");
 }
