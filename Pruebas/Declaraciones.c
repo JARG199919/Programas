@@ -165,6 +165,7 @@ int memoryGame(struct board *boardMemory) {
     
     do {
         int xPos1, yPos1, xPos2, yPos2;
+
         system("clear");
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory);
@@ -178,6 +179,7 @@ int memoryGame(struct board *boardMemory) {
         printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
         scanf("%d,%d", &xPos1, &yPos1);
         system("clear");
+
         }
         xPos1--;
         yPos1--;
@@ -197,6 +199,7 @@ int memoryGame(struct board *boardMemory) {
         printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
         scanf("%d,%d", &xPos2, &yPos2);
         system("clear");
+        
         }
         xPos2--;
         yPos2--;
