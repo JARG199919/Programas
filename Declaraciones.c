@@ -164,6 +164,7 @@ int memoryGame(struct board *boardMemory) {
     int puntajes = 0;
     do {
         int xPos1, yPos1, xPos2, yPos2;
+        
         system("clear");
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory); 
