@@ -159,29 +159,44 @@ void cleanBuffer() {//Es una funcion que libera el buffer para que no ocurra num
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
-int memoryGame(struct board *boardMemory) {/*TODO: Agregar una funcion o integrar una opcion que al digitar las filas y columnas, 
-                                            tenga una opcion de aceptar un numero o cualquier letra o numero para que no salga una violacion de segmanto
-                                            y que diga "Ingrese el formato siguente #,# */
+int memoryGame(struct board *boardMemory) {
     char cont;
     int puntajes = 0;
     do {
         int xPos1, yPos1, xPos2, yPos2;
+        system("clear");
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory); 
-
         printf("Seleccione la tarjeta que desea ver (#,#): ");
         scanf("%d,%d", &xPos1, &yPos1);
+
+        while ((xPos1>9?:xPos1<1) ^ (yPos1>9?:yPos1<1)){//Arreglo de ingreso de numeros
+        system("clear");
+        printf("Error al insertar el numero\n");
+        displayBoard(boardMemory);
+        printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
+        scanf("%d,%d", &xPos1, &yPos1);
+        system("clear");
+        }
         xPos1--;
         yPos1--;
-        system("clear");
-
+        system("clear");  
+        
         boardMemory->contenido[xPos1][yPos1].status = SHOW;
-
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory);
 
         printf("Seleccione la segunda tarjeta que desea ver (#,#): ");
         scanf("%d,%d", &xPos2, &yPos2);
+
+        while ((xPos2>9?:xPos2<1) ^ (yPos2>9?:yPos2<1)){//Arreglo de ingreso de numeros
+        system("clear");
+        printf("Error al insertar el numero\n");
+        displayBoard(boardMemory);
+        printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
+        scanf("%d,%d", &xPos2, &yPos2);
+        system("clear");
+        }
         xPos2--;
         yPos2--;
         system("clear");
@@ -233,5 +248,5 @@ void reconfigGame(struct board *boardMemory) {
     system("clear");
 }
 void showGameMenu() {
-    printf("1.Jugar\n2.Ver Puntajes\n3.Configuración\n4.Salir");
+    printf("1.Jugar\n2.Ver Puntajes\n3.Relas del juego\n4.Configuración\n5.Salir");
 }
