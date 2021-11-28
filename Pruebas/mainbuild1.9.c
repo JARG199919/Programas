@@ -42,18 +42,27 @@ int main(int argc, const char *argv[]) {
                 printf("\n\n");
                 break;
             case 3:
-                reconfigGame(&boardMemory);
+                system("clear");
+                printf("Bienvenido al las reglas de juego\n\n");
+                printf("1. Trata de ingresar numeros no letras ni simblos estraños para que no tengas errores.\n");
+                printf("2. Solo ingresa numeros de un intervalo del 1 al 9.\n");
+                printf("3. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma.");
+                printf("4. No te olvides de tu nombre al guardar tus puntos\n");
+                 printf("\n\n");
                 break;
             case 4:
+                reconfigGame(&boardMemory);
+                break;
+            case 5:
                 printf("Gracias por jugar\n");
                 liberarmemoria(&boardMemory);
                 break;
             default:
-                printf("Obcion no encontrada, por favor ingrese una opcion valida\n");
+                printf("Opcion no encontrada, por favor ingrese una opcion valida\n");
                 break;
         }
     } 
-    while (opcion != 4);
+    while (opcion != 5);
     return 0;
 }
 
