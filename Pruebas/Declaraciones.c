@@ -162,29 +162,42 @@ void cleanBuffer() {
 int memoryGame(struct board *boardMemory) {
     char cont;
     int puntajes = 0;
+    
     do {
         int xPos1, yPos1, xPos2, yPos2;
-
-        printf("\nPuntos %d", puntajes);
-        displayBoard(boardMemory); 
-        printf("Ingrese el primer numero de la tabla en un rango de 1 al 9: \n");
-        printf("\nIngrese el numero de fila: ");
-        scanf("%d",&xPos1);
-        printf("Ingrese el numero de columna: ");
-        scanf("%d",&yPos1);
-        xPos1--;
-        yPos1--;
         system("clear");
-
-        boardMemory->contenido[xPos1][yPos1].status = SHOW;
-
         printf("\nPuntos %d", puntajes);
         displayBoard(boardMemory);
-        printf("Ingrese el segundo numero de la tabla en un rango de 1 al 9: \n");
-        printf("\nIngrese el numero de fila: ");
-        scanf("%d",&xPos2);
-        printf("\nIngrese el numero de columna: ");
-        scanf("%d",&yPos2);
+        printf("Seleccione la tarjeta que desea ver (#,#): ");
+        scanf("%d,%d", &xPos1, &yPos1);
+ 
+        while ((xPos1>9?:xPos1<1) ^ (yPos1>9?:yPos1<1)){//Arreglo de ingreso de numeros
+        system("clear");
+        printf("Error al insertar el numero\n");
+        displayBoard(boardMemory);
+        printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
+        scanf("%d,%d", &xPos1, &yPos1);
+        system("clear");
+        }
+        xPos1--;
+        yPos1--;
+        system("clear");  
+        
+        boardMemory->contenido[xPos1][yPos1].status = SHOW;
+        printf("\nPuntos %d", puntajes);
+        displayBoard(boardMemory);
+
+        printf("Seleccione la segunda tarjeta que desea ver (#,#): ");
+        scanf("%d,%d", &xPos2, &yPos2);
+
+        while ((xPos2>9?:xPos2<1) ^ (yPos2>9?:yPos2<1)){//Arreglo de ingreso de numeros
+        system("clear");
+        printf("Error al insertar el numero\n");
+        displayBoard(boardMemory);
+        printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
+        scanf("%d,%d", &xPos2, &yPos2);
+        system("clear");
+        }
         xPos2--;
         yPos2--;
         system("clear");
