@@ -17,8 +17,8 @@ void EstructuraDelJuego(struct board *boardMemory) {
 struct size getBoardSize(int argc, const char *argv[]) {
     struct size board = {DEFAULT_ROWS, DEFAULT_COLUMNS};
     if (argc >= 3) {
-        int n = atoi(argv[1]);//Convertir a string
-        int m = atoi(argv[2]);//Convertir a string
+        int n = atoi(argv[1]);
+        int m = atoi(argv[2]);
         board.n = (n == 0) ? DEFAULT_ROWS : n;
         board.m = (m == 0) ? DEFAULT_COLUMNS : m;
         if ((board.n * board.m) % 2 != 0) {
@@ -28,7 +28,7 @@ struct size getBoardSize(int argc, const char *argv[]) {
     }
     return board;
 }
-//llenado de la tabla
+//llenado de la tabla con valores aleatorios
 void initBoard(struct board *board) {
     int nFilas = board->dimensions.n;
     int nColumnas = board->dimensions.m;
@@ -53,26 +53,26 @@ void initBoard(struct board *board) {
 }
 //Llenado de tabla
 void fillBoard(struct board *board) {
-    int nFilas = board->dimensions.n;//Guarda el numero de filas
-    int nColumnas = board->dimensions.m;//Guarda el numero de columnas
+    int nFilas = board->dimensions.n;
+    int nColumnas = board->dimensions.m;
     srand(time(NULL));
     int nOptions = (nColumnas * nFilas) / 2;
     char options[nOptions];
     for (int j = 0; j < nOptions; j++) {
-        options[j] = '0' +rand() % 9;//Llenado de numeros aleatorios en modo char
+        options[j] = '0' +rand() % 10;//Llenando con letras aleatorias //TODO: cambiar a numeros aleatorios del 1 al 9
     }
     int i = 0;
     while (i < nOptions) {
         int xPos1, yPos1, xPos2, yPos2;
         do {
-            xPos1 = rand() % nFilas; //Llenando con numeros aleatorios
-            yPos1 = rand() % nColumnas;//Llenando con numeros aleatorios
+            xPos1 = rand() % nFilas;
+            yPos1 = rand() % nColumnas;
         } while (board->contenido[xPos1][yPos1].card != '\0');
         do {   
             xPos2 = rand() % nFilas;
             yPos2 = rand() % nColumnas;
         } while (board->contenido[xPos2][yPos2].card != '\0');
-        if (xPos1 == xPos2 && yPos1 == yPos2) {// Verifica que tenga pares y si es asi continua
+        if (xPos1 == xPos2 && yPos1 == yPos2) {
             continue;
         }
         board->contenido[xPos2][yPos2].card = options[i];
@@ -120,7 +120,7 @@ void displayBoard(struct board *board) {
 }
 //mostrando o ocultando variables
 void mostrar_celda(char *borderColor, char *contentColor, struct celda celda) {
-    char *ocultarvariable = "♠"; //Se puede cambiar el simbolo
+    char *ocultarvariable = "♠"; 
     char contenido[2];
     contenido[0] = celda.card;
     contenido[1] = '\0';
@@ -155,22 +155,23 @@ bool formandopares(struct board *board) {
     }
     return false;
 }
-void cleanBuffer() {//Es una funcion que libera el buffer para que no ocurra numeros o strings con errores
+void cleanBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 int memoryGame(struct board *boardMemory) {
     char cont;
     int puntajes = 0;
+    
     do {
         int xPos1, yPos1, xPos2, yPos2;
-        
+
         system("clear");
         printf("\nPuntos %d", puntajes);
-        displayBoard(boardMemory); 
+        displayBoard(boardMemory);
         printf("Seleccione la tarjeta que desea ver (#,#): ");
         scanf("%d,%d", &xPos1, &yPos1);
-
+ 
         while ((xPos1>9?:xPos1<1) ^ (yPos1>9?:yPos1<1)){//Arreglo de ingreso de numeros
         system("clear");
         printf("Error al insertar el numero\n");
@@ -178,6 +179,7 @@ int memoryGame(struct board *boardMemory) {
         printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
         scanf("%d,%d", &xPos1, &yPos1);
         system("clear");
+
         }
         xPos1--;
         yPos1--;
@@ -197,6 +199,7 @@ int memoryGame(struct board *boardMemory) {
         printf("Ingrese un numero valido en formato ( #,# ) con una coma: ");
         scanf("%d,%d", &xPos2, &yPos2);
         system("clear");
+        
         }
         xPos2--;
         yPos2--;
