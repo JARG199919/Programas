@@ -36,7 +36,7 @@ int main(int argc, const char *argv[]) {
                 fclose(pointFile);// Guardar en un archivo
                 break;
             case 2:
-                system("clear");
+                system("clear");//Es te caso muestra los puntajes guardados con anterioridad
                 int puntajeTop = 0;
                 char nombreJugador[20];
                 pointFile = fopen("./puntos.txt","r");
@@ -47,23 +47,24 @@ int main(int argc, const char *argv[]) {
                 printf("\n\n");
                 break;
             case 3:
-                system("clear");
+                system("clear");//Reglas estableciadas
                 printf("Bienvenido al las reglas de juego\n\n");
                 printf("1. Trata de ingresar numeros no letras ni simblos estraños para que no tengas errores.\n");
-                printf("2. Solo ingresa numeros de un intervalo del 1 al 9.\n");
-                printf("3. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma.");
-                printf("4. No te olvides de tu nombre al guardar tus puntos\n");
+                printf("2. Solo ingresa numeros de un intervalo del 1 al 9.\n"); 
+                printf("3. Guardar tus puntos con un nombre sin espacios.\n");
+                printf("4. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma.\n");
+                printf("5. No configures la tabla menor a 2 ya que seria demasiado facil jugar y podria ocacionar errores.");
                  printf("\n\n");
                 break;
             case 4:
-                reconfigGame(&boardMemory);
+                reconfigGame(&boardMemory);// Se configura el tamaño de la tabla
                 break;
             case 5:
                 printf("Gracias por jugar\n");
-                liberarmemoria(&boardMemory);
+                liberarmemoria(&boardMemory);// Finaliza el programa
                 break;
             default:
-                printf("Opcion no encontrada, por favor ingrese una opcion valida\n");
+                printf("No existe esa opcion, por favor ingrese una opcion valida\n");
                 break;
         }
     } 
