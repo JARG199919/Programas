@@ -13,5 +13,4 @@ gcc mainV1.96.c Funciones.h Declaraciones.c -o main && ./main
 
 ## Orientador
 
-1. Néstor Aladana
-https://github.com/Nexxtor
+1. Néstor Aladana     GitHub: https://github.com/Nexxtor
