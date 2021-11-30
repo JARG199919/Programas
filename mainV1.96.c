@@ -23,7 +23,7 @@ int main(int argc, const char *argv[]) {
     do {
         int puntaje;
         showGameMenu();
-        printf("\n: ");
+        printf("\n\nIngrese una opción: ");
         scanf("%d", &opcion);
         switch (opcion) {
             case 1:
@@ -52,7 +52,7 @@ int main(int argc, const char *argv[]) {
                 printf("1. Trata de ingresar numeros no letras ni simblos estraños para que no tengas errores.\n");
                 printf("2. Solo ingresa numeros de un intervalo del 1 al 9.\n"); 
                 printf("3. Guardar tus puntos con un nombre sin espacios.\n");
-                printf("4. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma.\n");
+                printf("4. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma,\n   el numero maximo es de 16, asi que ten en cuenta este limite.\n");
                 printf("5. No configures la tabla menor a 2 ya que seria demasiado facil jugar y podria probocar errores fatales.\n\n");
                 printf("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
                  printf("\n\n");
