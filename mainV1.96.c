@@ -53,10 +53,13 @@ int main(int argc, const char *argv[]) {
                 printf("2. Solo ingresa numeros de un intervalo del 1 al 9.\n"); 
                 printf("3. Guardar tus puntos con un nombre sin espacios.\n");
                 printf("4. Si quieres hacer mas grande la tabla puedes ir al apartado numero 4,\n   pero ten en consideracion que un numero muy grande puede ocasionar errores o poca visibilidad de si misma.\n");
-                printf("5. No configures la tabla menor a 2 ya que seria demasiado facil jugar y podria ocacionar errores.");
+                printf("5. No configures la tabla menor a 2 ya que seria demasiado facil jugar y podria probocar errores fatales.\n\n");
+                printf("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
                  printf("\n\n");
                 break;
             case 4:
+                system("clear");
+                printf("'Ingrese una cantida mayor a 2 numeros enteros'\n\n");
                 reconfigGame(&boardMemory);// Se configura el tamaño de la tabla
                 break;
             case 5:
