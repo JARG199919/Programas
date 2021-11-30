@@ -8,7 +8,7 @@
 //Forma y colores de la tabla
 void EstructuraDelJuego(struct board *boardMemory) {
     strcpy(boardMemory->borderColor, "\033[0;35m");//color de los bordes
-    strcpy(boardMemory->contentColor, "\033[1;36m");//color de el contenido
+    strcpy(boardMemory->contentColor, "\033[1;32m");//color de el contenido
     initBoard(boardMemory);
     fillBoard(boardMemory);
     system("clear"); 
@@ -37,7 +37,7 @@ void initBoard(struct board *board) {
         for(int i = 0; i < nFilas; i++) {
             (board->contenido)[i] = (struct celda *) malloc(sizeof(struct celda) * nColumnas );
             if ((board->contenido)[i] == NULL) {
-                printf("No se puede reservar memoria para el tablero");
+                printf("No se puede reservar memoria para el tablero");//este apartado es por si ocurre un error en la tabla
                 exit(1);
             }
             for(int j = 0; j< nColumnas; j++) {
@@ -47,7 +47,7 @@ void initBoard(struct board *board) {
         }
     } 
     else {
-        printf("No se puede reservar memoria para el tablero");
+        printf("No se puede reservar memoria para el tablero");//este apartado es por si ocurre un error en la tabla
         exit(1);
     }
 }
@@ -120,7 +120,7 @@ void displayBoard(struct board *board) {
 }
 //mostrando o ocultando variables
 void mostrar_celda(char *borderColor, char *contentColor, struct celda celda) {
-    char *ocultarvariable = "♠"; 
+    char *ocultarvariable = "♣"; 
     char contenido[2];
     contenido[0] = celda.card;
     contenido[1] = '\0';
@@ -241,15 +241,28 @@ void reconfigGame(struct board *boardMemory) {
         printf("Ingrese la cantidad de columnas: ");
         scanf("%d", &m);
     }
-
+    while (n<2 || m<2){
+        system("clear"); 
+        printf("Ingrese correctamente los numeros pares, ejemplo 2 * 2 \n\n");
+        printf("Ingrese la cantidad de filas: ");
+        scanf("%d", &n);
+        printf("Ingrese la cantidad de columnas: ");
+        scanf("%d", &m);
+    }
+    while (n>16 || m>16){
+        system("clear"); 
+        printf("Ingreso un numero demasiado grande, pruebe con un numero entre 2 y 16\n\n");
+        printf("Ingrese la cantidad de filas: ");
+        scanf("%d", &n);
+        printf("Ingrese la cantidad de columnas: ");
+        scanf("%d", &m);
+    }
     liberarmemoria(boardMemory);
-
     boardMemory->dimensions.n = n;
     boardMemory->dimensions.m = m;
 
     EstructuraDelJuego(boardMemory);
-
-    system("clear");
+    system("clear"); 
 }
 void showGameMenu() {
     printf("1.Jugar\n2.Ver Puntajes\n3.Relas del juego\n4.Configuración\n5.Salir");
